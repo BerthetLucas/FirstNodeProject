@@ -15,8 +15,11 @@ const connection = mysql.createConnection({
 });
 
 const displayResults = (request, reponse) => {
-  // simple query
-  connection.query("SELECT * FROM pictures", function (err, results, fields) {
+const limit = request.query.limit; 
+
+    // simple query
+  connection.query("SELECT * FROM pictures ORDER BY id DESC LIMIT " + limit, 
+  function (err, results, fields) {
     reponse.send(results);
   });
 };
