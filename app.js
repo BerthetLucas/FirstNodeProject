@@ -4,13 +4,15 @@ const mysql = require('mysql2');
 // create the connection to database
 const connection = mysql.createConnection({
   host: 'localhost',
+  port : '3306',
   user: 'root',
-  database: 'dwwm_20_10_2023'
+  password: '',
+  database: 'dwwm_20_10_2023',
 });
 
 // simple query
 connection.query(
-  'SELECT * FROM `table` WHERE `name` = "Page" AND `age` > 45',
+  'SELECT * FROM pictures',
   function(err, results, fields) {
     console.log(results); // results contains rows returned by server
     console.log(fields); // fields contains extra meta data about results, if available
